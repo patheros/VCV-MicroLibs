@@ -1,17 +1,17 @@
 /*
 * Description: 
-* cvRange Configurabel Voltage Range for any VCV Rack Module.
+* cvRange Configurable Voltage Range for any VCV Rack Module.
 * 
 * Usage:
 * 1. Copy this file into your project.
 * 2. Add a `CVRange range` to your Module.
-* 3. In your Module constructure Use `configCVParam` instead of `configParam` to configure any voltage knobs.
+* 3. In your Module constructor Use `configCVParam` instead of `configParam` to configure any voltage knobs.
 * 4. In your process call `range.map` on the knob values to convert them to Voltages.
 * 5. Add a call to `module->range.addMenu` in your ModuleWidget.
 *
 * Example:
 * An example of cvRange in use can be found in OneShot in the PathSet-Free collection
-* Source code is avalablie here https://github.com/patheros/PathSetModules/blob/main/src/OneShot.cpp
+* Source code is available here https://github.com/patheros/PathSetModules/blob/main/src/OneShot.cpp
 *
 * License:
 * Copyright (C) 2022  Andrew Hanson (PathSet)
@@ -51,21 +51,21 @@ struct CVRange {
 	/**
 	 * Stores the first voltage value for the range.
 	 * 
-	 * In the UI this is labled "Min" for minimum, but if this is the larger of the two values it will funciton as the maximum.
+	 * In the UI this is labeled "Min" for minimum, but if this is the larger of the two values it will function as the maximum.
 	 */
 	float cv_a;
 
 	/**
 	 * Stores the second voltage value for the range.
 	 *
-	 * In the UI this is labled "Max" for maxomum, but if this is the lower of the two balues it will funciton as the minimum.
+	 * In the UI this is labeled "Max" for maximum, but if this is the lower of the two values it will function as the minimum.
 	 */
 	float cv_b;
 
 	///Internal snapshot of the range full voltage range.
 	float range;
 
-	///Internal snapshot of the mininum voltage value for this range.
+	///Internal snapshot of the minimum voltage value for this range.
 	float min;
 
 	///Constructs a default CVRange with a range of +/- 1V.
@@ -76,9 +76,9 @@ struct CVRange {
 	}
 
 	/**
-	 * Constructs a CVRange with a given mininum and maximum.
+	 * Constructs a CVRange with a given minimum and maximum.
 	 *
-	 * Note cv_a is always set to min and cv_b is set to max, but if cv_a is greater than cv_b, cv_a will function as a the maxiumu and cv_b will function as the mininum.
+	 * Note cv_a is always set to min and cv_b is set to max, but if cv_a is greater than cv_b, cv_a will function as a the maximum and cv_b will function as the minimum.
 	 */
 	CVRange(float min, float max){
 		cv_a = min;
@@ -136,7 +136,7 @@ struct CVRange {
 	}
 
 	/**
-	 * Converts value from a paramter to voltage.
+	 * Converts value from a parameter to voltage.
 	 * 
 	 * Example:
 	 * 
@@ -169,7 +169,7 @@ struct CVRange {
 	 */
 	void addMenu(Module* module, Menu* menu, std::string menuName = "Range"){
 
-		//Wraper for cv_a and cv_b to interface with CVTextFiled amd CVSlider
+		//Wrapper for cv_a and cv_b to interface with CVTextFiled and CVSlider
 		struct CVQuantity : Quantity {
 			float* value_pointer;
 			CVRange* range;
@@ -309,7 +309,7 @@ struct CVRange {
 /**
  * ParamQuantity for any CV Knob. Not required, but makes the knob show the selected Voltage in the tooltip and edit menu.
  *
- * WARNING: the range field on this must explicity be set or this will crash.
+ * WARNING: the range field on this must explicitly be set or this will crash.
  *
  * A helper function `configCVParam` is provided to make this easier
  *
@@ -329,7 +329,7 @@ struct CVRange {
  *         ...
  *     }
  *
- * Non-Helper, Multiline Example:
+ * Non-Helper, Multi-Line Example:
  *
  *     void appendContextMenu(Menu* menu) override {
  *         ...
